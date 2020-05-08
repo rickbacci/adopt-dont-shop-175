@@ -30,5 +30,3 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
     end
   end
 end
-
-
