@@ -10,10 +10,15 @@ RSpec.describe 'Pet Index', type: :feature do
       zip: '80202'
     )
 
-    @pet = shelter.pets.create!(name: 'foo foo')
+    @pet = shelter.pets.create(
+      name: 'foo foo',
+      image: 'foo foo image',
+      age: '2',
+      sex: 'Female')
   end
+
   describe 'As a visitor' do
-    describe 'When I visit the pets index page' do
+    describe 'when I visit /pets' do
       it 'I can see all the pets in the system' do
         visit '/pets'
 
