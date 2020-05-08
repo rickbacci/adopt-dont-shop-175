@@ -4,8 +4,26 @@
 
 shelters = Shelter.create(
   [
-    { name: 'Shelter1' },
-    { name: 'Shelter2' },
-    { name: 'Shelter3' }
+    {
+      name: 'Shelter1',
+      address: '123 foo st.',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80202'
+    },
+    {
+      name: 'Shelter2',
+      address: '234 foo st.',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80202'
+    },
+    {
+      name: 'Shelter3',
+      address: '345 foo st.',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80202'
+    }
   ]
 )
