@@ -1,7 +1,7 @@
 <h1>Shelter show</h1>
 
 <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
-
+<%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
 
 <p><%= @shelter.name %></p>
 <p><%= @shelter.address %></p>
