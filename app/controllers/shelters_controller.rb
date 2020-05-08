@@ -20,6 +20,20 @@ class SheltersController < ApplicationController
     end
   end
 
+  def edit
+    @shelter = Shelter.find(params[:id])
+  end
+
+  def update
+    @shelter = Shelter.find(params[:id])
+
+    if @shelter.update(shelter_params)
+      redirect_to "/shelters/#{@shelter.id}"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def shelter_params
