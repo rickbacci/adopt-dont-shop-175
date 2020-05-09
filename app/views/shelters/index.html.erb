@@ -5,9 +5,10 @@
 
 <ul>
   <% @shelters.each do |shelter| %>
-    <li>
+    <li id=shelter-<%= shelter.id %>>
       <%= shelter.name %>
-      <%= link_to 'edit', "/shelters/#{shelter.id}/edit", id: "#{shelter.id}" %>
+      <%= link_to 'edit', "/shelters/#{shelter.id}/edit" %>
+      <%= link_to 'delete', "/shelters/#{shelter.id}", method: :delete %>
     </li>
   <% end %>
 </ul>

@@ -26,9 +26,10 @@ RSpec.describe 'Shelter Update' do
 
         visit '/shelters'
 
-        expect(page).to have_link('edit')
-
-        find("a\##{shelter.id}").click
+        within("#shelter-#{shelter.id}") do
+          expect(page).to have_link('edit')
+          click_link 'edit'
+        end
 
         fill_in 'Name', with: 'foobar shelter'
 
@@ -36,6 +37,18 @@ RSpec.describe 'Shelter Update' do
 
         expect(current_path).to eq("/shelters/#{shelter.id}")
         expect(page).to have_content('foobar shelter')
+      end
+
+      it 'I can delete the shelter' do
+        shelter = Shelter.create(name: 'Rescue me')
+
+        visit '/shelters'
+
+        within("#shelter-#{shelter.id}") do
+          expect(page).to have_link('delete')
+          click_link 'delete'
+          expect(current_path).to eq('/shelters')
+        end
       end
     end
   end
