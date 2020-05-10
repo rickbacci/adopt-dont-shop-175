@@ -2,11 +2,15 @@
 
 <%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new" %>
 
-<% @pets.each do |pet| %>
-  <p>Image: <%= pet.image %></p>
-  <p>Name: <%= pet.name %></p>
-  <p>Age: <%= pet.age %></p>
-  <p>Sex: <%= pet.sex %></p>
-  <p>Status: <%= pet.status %></p>
-<% end %>
-
+<ul>
+  <% @pets.each do |pet| %>
+    <li id=pet-<%= pet.id %>>
+      <span>Image: <%= pet.image %></span>
+      <span>Name: <%= pet.name %></span>
+      <span>Age: <%= pet.age %></span>
+      <span>Sex: <%= pet.sex %></span>
+      <span>Status: <%= pet.status %></span>
+      <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
+    </li>
+  <% end %>
+</ul>

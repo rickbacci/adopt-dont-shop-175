@@ -28,16 +28,16 @@ RSpec.describe 'Pet Index', type: :feature do
         expect(page).to have_content(@pet.sex)
         expect(page).to have_content(@pet.shelter.name)
       end
+
+      it 'I can click a link to edit a pet' do
+        visit '/pets'
+
+        within("#pet-#{@pet.id}") do
+          expect(page).to have_link('edit')
+          click_link 'edit'
+          expect(current_path).to eq("/pets/#{@pet.id}/edit")
+        end
+      end
     end
   end
 end
-
-
-# As a visitor
-# When I visit '/pets'
-# Then I see each Pet in the system including the Pet's:
-# - image
-# - name
-# - approximate age
-# - sex
-# - name of the shelter where the pet is currently located

@@ -27,6 +27,16 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
         expect(page).to have_content(@pet.age)
         expect(page).to have_content(@pet.sex)
       end
+
+      it 'I can click a link to edit a pet' do
+        visit '/pets'
+
+        within("#pet-#{@pet.id}") do
+          expect(page).to have_link('edit')
+          click_link 'edit'
+          expect(current_path).to eq("/pets/#{@pet.id}/edit")
+        end
+      end
     end
   end
 end

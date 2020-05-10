@@ -1,10 +1,14 @@
 <h1>Pets#index</h1>
 
-<% @pets.each do |pet| %>
-  <p>Image: <%= pet.image %></p>
-  <p>Name: <%= pet.name %></p>
-  <p>Age: <%= pet.age %></p>
-  <p>Sex: <%= pet.sex %></p>
-  <p>Shelter: <%= pet.shelter.name %></p>
-<% end %>
-
+<ul>
+  <% @pets.each do |pet| %>
+    <li id=pet-<%= pet.id %>>
+      <span>Image: <%= pet.image %></span>
+      <span>Name: <%= pet.name %></span>
+      <span>Age: <%= pet.age %></span>
+      <span>Sex: <%= pet.sex %></span>
+      <span>Shelter: <%= pet.shelter.name %></span>
+      <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
+    </li>
+  <% end %>
+</ul>
