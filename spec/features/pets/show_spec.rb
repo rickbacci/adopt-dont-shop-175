@@ -47,4 +47,9 @@ RSpec.describe 'Pet Show', type: :feature do
   it 'displays the pets adoption status' do
     expect(page).to have_content(@pet.status)
   end
+
+  after :all do
+    Pet.destroy_all
+    Shelter.destroy_all
+  end
 end

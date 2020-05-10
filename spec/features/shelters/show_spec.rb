@@ -42,4 +42,9 @@ RSpec.describe 'Shelter show', type: :feature do
 
     expect(current_path).to eq("/shelters/#{@shelter.id}/pets")
   end
+
+  after :all do
+    Pet.destroy_all
+    Shelter.destroy_all
+  end
 end

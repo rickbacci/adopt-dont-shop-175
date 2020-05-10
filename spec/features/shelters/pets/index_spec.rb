@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Shelter Pets Index', type: :feature do
-  before :each do
+  before :all do
     @shelter = Shelter.create!(
       name: 'Shelter1',
       address: '123 foo st.',
@@ -14,7 +14,8 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
       name: 'foo foo',
       image: 'foo foo image',
       age: '2',
-      sex: 'Female')
+      sex: 'Female'
+    )
   end
 
   describe 'As a visitor' do
@@ -58,5 +59,10 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
         end
       end
     end
+  end
+
+  after :all do
+    Pet.destroy_all
+    Shelter.destroy_all
   end
 end

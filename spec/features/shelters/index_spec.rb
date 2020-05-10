@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Shelter index', type: :feature do
-  before :each do
+  before :all do
     @shelter1 = Shelter.create!(
       name: 'Shelter1',
       address: '123 foo st.',
@@ -44,5 +44,10 @@ RSpec.describe 'Shelter index', type: :feature do
       click_link @shelter1.name
       expect(current_path).to eq("/shelters/#{@shelter1.id}")
     end
+  end
+
+  after :all do
+    Pet.destroy_all
+    Shelter.destroy_all
   end
 end

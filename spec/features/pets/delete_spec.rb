@@ -6,6 +6,7 @@ RSpec.describe 'Pet Delete' do
       it 'I can delete the pet' do
         shelter = Shelter.create(name: 'rescue puppies inc.')
         pet = shelter.pets.create(name: 'sick puppy')
+
         visit "/pets/#{pet.id}"
 
         expect(page).to have_link('Delete Pet')

@@ -30,4 +30,9 @@ RSpec.describe 'Shelter Pet Creation', type: :feature do
       end
     end
   end
+
+  after :all do
+    Pet.destroy_all
+    Shelter.destroy_all
+  end
 end

@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'As a visitor' do
+
+  before :all do
+    shelter = Shelter.create(name: 'foo')
+    shelter.pets.create(name: 'pet')
+  end
+
   context 'when I visit any page on the site' do
     it 'at the top of the page, I see a link to the Pets Index page' do
-      shelter = Shelter.create(name: 'foo')
-      shelter.pets.create(name: 'pet')
 
       visit '/shelters'
 
@@ -16,8 +20,6 @@ RSpec.describe 'As a visitor' do
     end
 
     it 'at the top of the page, I see a link to the Shelters Index page' do
-      shelter = Shelter.create(name: 'foo')
-      shelter.pets.create(name: 'pet')
 
       visit '/pets'
 
@@ -28,4 +30,10 @@ RSpec.describe 'As a visitor' do
       expect(current_path).to eq('/shelters')
     end
   end
+
+  after :all do
+    Pet.destroy_all
+    Shelter.destroy_all
+  end
+
 end
