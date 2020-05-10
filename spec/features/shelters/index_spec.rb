@@ -35,4 +35,14 @@ RSpec.describe 'Shelter index', type: :feature do
     expect(page).to have_content(@shelter2.name)
     expect(page).to have_content(@shelter3.name)
   end
+
+  it 'clicking a shelter name takes me to the shelter show page' do
+    visit "/shelters"
+
+    within("#shelter-#{@shelter1.id}") do
+      expect(page).to have_link(@shelter1.name)
+      click_link @shelter1.name
+      expect(current_path).to eq("/shelters/#{@shelter1.id}")
+    end
+  end
 end

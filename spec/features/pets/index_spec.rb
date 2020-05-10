@@ -39,7 +39,6 @@ RSpec.describe 'Pet Index', type: :feature do
         end
       end
 
-
       it 'I can click a link to delete a pet' do
         visit '/pets'
 
@@ -47,6 +46,16 @@ RSpec.describe 'Pet Index', type: :feature do
           expect(page).to have_link('delete')
           click_link 'delete'
           expect(current_path).to eq('/pets')
+        end
+      end
+
+      it 'clicking a shelter name takes me to the shelter show page' do
+        visit "/shelters"
+
+        within("#shelter-#{@pet.shelter.id}") do
+          expect(page).to have_link(@pet.shelter.name)
+          click_link @pet.shelter.name
+          expect(current_path).to eq("/shelters/#{@pet.shelter.id}")
         end
       end
     end
