@@ -1,12 +1,10 @@
-<h2>Shelter show</h2>
-
-<section class="subnav">
-  <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
-  <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
-  <%= link_to 'View Pets', "/shelters/#{@shelter.id}/pets" %>
-</section>
-
 <section class="shelter-show">
+  <header>
+    <h2>Shelter show</h2>
+    <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
+    <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
+    <%= link_to 'View Pets', "/shelters/#{@shelter.id}/pets" %>
+  </header>
   <p><%= @shelter.name %></p>
   <p><%= @shelter.address %></p>
   <p><%= @shelter.city %></p>

@@ -1,10 +1,8 @@
-<h2>Shelters</h2>
-
-<section class="subnav">
-  <%= link_to 'New Shelter', '/shelters/new' %>
-</section>
-
 <section class="shelters">
+  <header>
+    <h2>Shelters</h2>
+    <%= link_to 'New Shelter', '/shelters/new' %>
+  </header>
   <ul>
     <% @shelters.each do |shelter| %>
       <li id=shelter-<%= shelter.id %>>

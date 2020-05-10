@@ -1,14 +1,11 @@
-<h2>Shelter's Pets</h2>
-
-<section class="subnav">
-  <%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new" %>
-</section>
-
-<section class="shelter-pets-count">
-  <%= @pets.all.count %>
-</section>
-
 <section class="shelter-pets">
+  <header>
+    <h2>Shelter's Pets</h2>
+    <%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new" %>
+    <section class="shelter-pets-count">
+      <%= @pets.all.count %>
+    </section>
+  </header>
   <ul>
     <% @pets.each do |pet| %>
       <li id=pet-<%= pet.id %>>

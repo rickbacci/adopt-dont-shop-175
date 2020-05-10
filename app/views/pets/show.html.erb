@@ -1,16 +1,25 @@
-<h2>Pet Show</h2>
-
-<section class="subnav">
-  <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
-  <%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
-</section>
-
 <section class="pet-show">
-  <p><%= @pet.image %></p>
-  <p><%= @pet.name %></p>
-  <p><%= @pet.description %></p>
-  <p><%= @pet.age %></p>
-  <p><%= @pet.sex %></p>
-  <p><%= @pet.status %></p>
+  <header>
+    <h2>Pet Show</h2>
+    <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
+    <%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
+  </header>
+  <p>
+    <%= @pet.image %>
+  </p>
+  <p>
+    <%= @pet.name %>
+  </p>
+  <p>
+    <%= @pet.description %>
+  </p>
+  <p>
+    <%= @pet.age %>
+  </p>
+  <p>
+    <%= @pet.sex %>
+  </p>
+  <p>
+    <%= @pet.status %>
+  </p>
 </section>
-

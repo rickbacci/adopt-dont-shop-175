@@ -1,6 +1,7 @@
-<h2>New Shelter Pet</h2>
-
 <section class="new-shelter-pet">
+  <header>
+    <h2>New Shelter Pet</h2>
+  </header>
   <%= form_tag "/shelters/#{@shelter.id}/pets" do %>
     <%= label_tag :name %>
     <%= text_field_tag :name %>
