@@ -6,7 +6,7 @@
   <% @pets.each do |pet| %>
     <li id=pet-<%= pet.id %>>
       <span>Image: <%= pet.image %></span>
-      <span>Name: <%= pet.name %></span>
+      <span> Name: <%= link_to pet.name, "/pets/#{pet.id}" %></span>
       <span>Age: <%= pet.age %></span>
       <span>Sex: <%= pet.sex %></span>
       <span>Status: <%= pet.status %></span>
