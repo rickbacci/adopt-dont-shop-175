@@ -11,6 +11,7 @@
       <span>Sex: <%= pet.sex %></span>
       <span>Status: <%= pet.status %></span>
       <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
+      <%= link_to 'delete', "/pets/#{pet.id}", method: :delete %>
     </li>
   <% end %>
 </ul>

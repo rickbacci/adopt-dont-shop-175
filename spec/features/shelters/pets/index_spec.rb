@@ -37,6 +37,16 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
           expect(current_path).to eq("/pets/#{@pet.id}/edit")
         end
       end
+
+      it 'I can click a link to delete a pet' do
+        visit '/pets'
+
+        within("#pet-#{@pet.id}") do
+          expect(page).to have_link('delete')
+          click_link 'delete'
+          expect(current_path).to eq('/pets')
+        end
+      end
     end
   end
 end
