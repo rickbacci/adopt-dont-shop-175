@@ -30,7 +30,7 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
       end
 
       it 'I can click a link to edit a pet' do
-        visit '/pets'
+        visit "/shelters/#{@shelter.id}/pets"
 
         within("#pet-#{@pet.id}") do
           expect(page).to have_link('edit')
@@ -40,7 +40,7 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
       end
 
       it 'I can click a link to delete a pet' do
-        visit '/pets'
+        visit "/shelters/#{@shelter.id}/pets"
 
         within("#pet-#{@pet.id}") do
           expect(page).to have_link('delete')
@@ -50,13 +50,21 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
       end
 
       it 'clicking a pets name takes me to the pets show page' do
-        visit "/pets"
+        visit "/shelters/#{@shelter.id}/pets"
 
         within("#pet-#{@pet.id}") do
           expect(page).to have_link(@pet.name)
           click_link @pet.name
           expect(current_path).to eq("/pets/#{@pet.id}")
         end
+      end
+
+      it 'I see a count of the number of pets at this shelter' do
+        visit "/shelters/#{@shelter.id}/pets"
+
+        pet_count = find(".shelter-pets-count").text
+
+        expect(pet_count).to eq('1')
       end
     end
   end
