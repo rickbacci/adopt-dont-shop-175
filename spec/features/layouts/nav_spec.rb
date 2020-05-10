@@ -4,7 +4,7 @@ RSpec.describe 'As a visitor' do
 
   before :all do
     shelter = Shelter.create(name: 'foo')
-    shelter.pets.create(name: 'pet')
+    shelter.pets.create(name: 'pet', status: 'adoptable')
   end
 
   context 'when I visit any page on the site' do

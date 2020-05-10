@@ -16,7 +16,7 @@ RSpec.describe 'Pet Show', type: :feature do
       age: '5',
       sex: 'male',
       description: 'crazy rabbit',
-      status: 'pending'
+      status: 'pending_adoption'
     )
   end
 

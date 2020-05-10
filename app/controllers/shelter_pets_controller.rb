@@ -1,7 +1,7 @@
 class ShelterPetsController < ApplicationController
   def index
     @shelter = Shelter.find(params[:shelter_id])
-    @pets = @shelter.pets.all
+    @pets = @shelter.pets.all.sort_by(&:status)
   end
 
   def new

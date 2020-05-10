@@ -5,7 +5,7 @@ RSpec.describe 'Pet Delete' do
     describe 'When I visit the pet show page' do
       it 'I can delete the pet' do
         shelter = Shelter.create(name: 'rescue puppies inc.')
-        pet = shelter.pets.create(name: 'sick puppy')
+        pet = shelter.pets.create(name: 'sick puppy', status: 'adoptable')
 
         visit "/pets/#{pet.id}"
 

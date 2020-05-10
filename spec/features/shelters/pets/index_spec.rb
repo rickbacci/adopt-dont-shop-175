@@ -10,11 +10,37 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
       zip: '80202'
     )
 
+    shelter2= Shelter.create!(
+      name: 'Shelter2',
+      address: '123 foo st.',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80202'
+    )
+
     @pet = @shelter.pets.create(
+      name: 'foofoopending',
+      image: 'foo foo image',
+      age: '2',
+      sex: 'Female',
+      status: 'pending_adoption'
+    )
+
+    @pet3 = @shelter.pets.create(
       name: 'foo foo',
       image: 'foo foo image',
       age: '2',
-      sex: 'Female'
+      sex: 'Female',
+      status: 'adoptable'
+    )
+
+    @pet2 = shelter2.pets.create(
+      name: 'Cena puppy',
+      image: 'cena.jpg',
+      description: 'you can\'t see me',
+      age: '2',
+      sex: 'male',
+      status: 'adoptable'
     )
   end
 
@@ -23,10 +49,23 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
       it 'I can see all of the shelters pets' do
         visit "/shelters/#{@shelter.id}/pets"
 
+        expect(page).to have_content(@pet.name)
+      end
+
+      it 'I cannot see other shelters pets' do
+        visit "/shelters/#{@shelter.id}/pets"
+
+        expect(page).to_not have_content(@pet2.name)
+      end
+
+      it 'I can see the pet\'s attributes' do
+        visit "/shelters/#{@shelter.id}/pets"
+
         expect(page).to have_content(@pet.image)
         expect(page).to have_content(@pet.name)
         expect(page).to have_content(@pet.age)
         expect(page).to have_content(@pet.sex)
+        expect(page).to have_content(@pet.status)
       end
 
       it 'I can click a link to edit a pet' do
@@ -64,7 +103,15 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
 
         pet_count = find(".shelter-pets-count").text
 
-        expect(pet_count).to eq('1')
+        expect(pet_count).to eq('2')
+      end
+
+      it 'adoptable pets are listed first' do
+        visit '/pets'
+
+        sorted = find('ul').all('li')[0].text.include? 'adoptable'
+
+        expect(sorted).to be(true)
       end
     end
   end

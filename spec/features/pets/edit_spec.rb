@@ -5,7 +5,7 @@ RSpec.describe 'Pet Update', type: :feature do
     describe 'when I visit the Pet Show page' do
       it 'I can update the Pet' do
         shelter = Shelter.create(name: 'rescue ruppies')
-        pet = shelter.pets.create(name: 'Speedy')
+        pet = shelter.pets.create(name: 'Speedy', status: 'adoptable')
 
         visit "/pets/#{pet.id}"
 

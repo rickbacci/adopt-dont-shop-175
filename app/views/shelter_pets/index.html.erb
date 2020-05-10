@@ -3,7 +3,7 @@
     <h2>Shelter's Pets</h2>
     <%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new" %>
     <section class="shelter-pets-count">
-      <%= @pets.all.count %>
+      <%= @pets.count %>
     </section>
   </header>
   <ul>
