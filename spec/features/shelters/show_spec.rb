@@ -34,4 +34,12 @@ RSpec.describe 'Shelter show', type: :feature do
   it 'displays a shelters zip' do
     expect(page).to have_content(@shelter.zip)
   end
+
+  it 'has a link to take me to the shelter\'s pets page' do
+    expect(page).to have_link('View Pets')
+
+    click_link 'View Pets'
+
+    expect(current_path).to eq("/shelters/#{@shelter.id}/pets")
+  end
 end
