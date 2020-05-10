@@ -1,16 +1,18 @@
-<h1>Pets#index</h1>
+<h2>Pets</h2>
 
-<ul>
-  <% @pets.each do |pet| %>
-    <li id=pet-<%= pet.id %>>
-      <span>Image: <%= pet.image %></span>
-      <span>Name: <%= pet.name %></span>
-      <span> Name: <%= link_to pet.name, "/pets/#{pet.id}" %></span>
-      <span>Age: <%= pet.age %></span>
-      <span>Sex: <%= pet.sex %></span>
-      <span> Shelter: <%= link_to pet.shelter.name, "/shelters/#{pet.shelter.id}" %></span>
-      <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
-      <%= link_to 'delete', "/pets/#{pet.id}", method: :delete %>
-    </li>
-  <% end %>
-</ul>
+<section class="pets">
+  <ul>
+    <% @pets.each do |pet| %>
+      <li id=pet-<%= pet.id %>>
+        <span>Image: <%= pet.image %></span>
+        <span>Name: <%= pet.name %></span>
+        <span> Name: <%= link_to pet.name, "/pets/#{pet.id}" %></span>
+        <span>Age: <%= pet.age %></span>
+        <span>Sex: <%= pet.sex %></span>
+        <span> Shelter: <%= link_to pet.shelter.name, "/shelters/#{pet.shelter.id}" %></span>
+        <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
+        <%= link_to 'delete', "/pets/#{pet.id}", method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+</section>

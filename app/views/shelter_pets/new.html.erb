@@ -1,23 +1,24 @@
+<h2>New Shelter Pet</h2>
 
-<h1>New Shelter Pet</h1>
+<section class="new-shelter-pet">
+  <%= form_tag "/shelters/#{@shelter.id}/pets" do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
 
-<%= form_tag "/shelters/#{@shelter.id}/pets" do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
+    <%= label_tag :image %>
+    <%= text_field_tag :image %>
 
-  <%= label_tag :image %>
-  <%= text_field_tag :image %>
+    <%= label_tag :description %>
+    <%= text_field_tag :description %>
 
-  <%= label_tag :description %>
-  <%= text_field_tag :description %>
+    <%= label_tag :age %>
+    <%= text_field_tag :age %>
 
-  <%= label_tag :age %>
-  <%= text_field_tag :age %>
+    <%= label_tag :sex %>
+    <%= text_field_tag :sex %>
 
-  <%= label_tag :sex %>
-  <%= text_field_tag :sex %>
+    <%= hidden_field_tag :status, 'adoptable' %>
 
-  <%= hidden_field_tag :status, 'adoptable' %>
-
-  <%= submit_tag 'Create Pet' %>
-<% end %>
+    <%= submit_tag 'Create Pet' %>
+  <% end %>
+</section>

@@ -1,15 +1,17 @@
-<h1>Shelters</h1>
+<h2>Shelters</h2>
 
+<section class="subnav">
+  <%= link_to 'New Shelter', '/shelters/new' %>
+</section>
 
-<%= link_to 'New Shelter', '/shelters/new' %>
-
-<ul>
-  <% @shelters.each do |shelter| %>
-    <li id=shelter-<%= shelter.id %>>
-      <%= link_to shelter.name, "/shelters/#{shelter.id}" %>
-      <%= link_to 'edit', "/shelters/#{shelter.id}/edit" %>
-      <%= link_to 'delete', "/shelters/#{shelter.id}", method: :delete %>
-    </li>
-  <% end %>
-</ul>
-
+<section class="shelters">
+  <ul>
+    <% @shelters.each do |shelter| %>
+      <li id=shelter-<%= shelter.id %>>
+        <%= link_to shelter.name, "/shelters/#{shelter.id}" %>
+        <%= link_to 'edit', "/shelters/#{shelter.id}/edit" %>
+        <%= link_to 'delete', "/shelters/#{shelter.id}", method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+</section>
