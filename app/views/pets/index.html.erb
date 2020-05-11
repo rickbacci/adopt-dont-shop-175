@@ -1,6 +1,8 @@
 <section class="pets">
   <header>
     <h2>Pets</h2>
+    <%= link_to 'Adoptable Pets', "/pets?adoptable=true" %>
+    <%= link_to 'Adoption-Pending Pets', "/pets?adoptable=false" %>
   </header>
   <ul>
     <% @pets.each do |pet| %>

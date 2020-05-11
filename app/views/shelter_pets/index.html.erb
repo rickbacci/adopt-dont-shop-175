@@ -5,6 +5,8 @@
     <section class="shelter-pets-count">
       <%= @pets.count %>
     </section>
+    <%= link_to 'Adoptable Pets', "/shelters/#{@shelter.id}/pets?adoptable=true" %>
+    <%= link_to 'Adoption-Pending Pets', "/shelters/#{@shelter.id}/pets?adoptable=false" %>
   </header>
   <ul>
     <% @pets.each do |pet| %>

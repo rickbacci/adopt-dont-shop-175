@@ -107,11 +107,35 @@ RSpec.describe 'Shelter Pets Index', type: :feature do
       end
 
       it 'adoptable pets are listed first' do
-        visit '/pets'
+        visit "/shelters/#{@shelter.id}/pets"
 
         sorted = find('ul').all('li')[0].text.include? 'adoptable'
 
         expect(sorted).to be(true)
+      end
+
+      it 'I can click a link to show only adoptable pets' do
+        visit "/shelters/#{@shelter.id}/pets"
+
+        expect(find('ul')).to have_selector('li', count: 2)
+
+        within("header") do
+          click_link 'Adoptable Pets'
+        end
+
+        expect(find('ul')).to have_selector('li', count: 1)
+      end
+
+      it 'I can click a link to show only adoption pending pets' do
+        visit "/shelters/#{@shelter.id}/pets"
+
+        expect(find('ul')).to have_selector('li', count: 2)
+
+        within("header") do
+          click_link 'Adoption-Pending Pets'
+        end
+
+        expect(find('ul')).to have_selector('li', count: 1)
       end
     end
   end

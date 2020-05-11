@@ -1,6 +1,13 @@
 class PetsController < ApplicationController
   def index
-    @pets = Pet.all.sort_by(&:status)
+    case params[:adoptable]
+    when 'true'
+      @pets = Pet.where(status: 'adoptable')
+    when 'false'
+      @pets = Pet.where(status: 'pending_adoption')
+    else
+      @pets = Pet.order(:status)
+    end
   end
 
   def show

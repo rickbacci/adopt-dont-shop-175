@@ -120,6 +120,30 @@ RSpec.describe 'Pet Index', type: :feature do
           expect(current_path).to eq("/pets/#{@pet.id}")
         end
       end
+
+      it 'I can click a link to show only adoptable pets' do
+        visit '/pets'
+
+        expect(find('ul')).to have_selector('li', count: 4)
+
+        within("header") do
+          click_link 'Adoptable Pets'
+        end
+
+        expect(find('ul')).to have_selector('li', count: 2)
+      end
+
+      it 'I can click a link to show only adoption pending pets' do
+        visit '/pets'
+
+        expect(find('ul')).to have_selector('li', count: 4)
+
+        within("header") do
+          click_link 'Adoption-Pending Pets'
+        end
+
+        expect(find('ul')).to have_selector('li', count: 2)
+      end
     end
   end
 
